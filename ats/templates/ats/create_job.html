@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Create Job {% endblock %}
+
+{% block sidebar %}
+<ul class="nav&#x20;nav-pills&#x20;nav-stacked">
+    <li>
+        <a href="{% url "ats_jobs" %}">Overview</a>
+    </li>
+    <li class="active">
+        <a href="{% url "ats_create" %}">Create job</a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h1>Create a job</h1>
+<form method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit">
+</form>
+{% endblock %}

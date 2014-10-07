@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ profile_user }}{% endblock %}
+
+{% block content %}
+<h1>{{ profile_user }}</h1>
+<p>Salutation: {{ profile_user.userprofile.salutation }}</p>
+<p>First name: {{ profile_user.first_name }}</p>
+<p>Last name: {{ profile_user.last_name }}</p>
+<p>Email: {{ profile_user.email }}</p>
+<p>Phone: {{ profile_user.userprofile.phone }}</p>
+<p>Address 1: {{ profile_user.userprofile.address1 }}<p/>
+<p>Address 2: {{ profile_user.userprofile.address2 }}<p/>
+<p>City: {{ profile_user.userprofile.city }}</p>
+<p>Postcode: {{ profile_user.userprofile.postcode }}</p>
+<p>Summary: {{ profile_user.userprofile.summary }}</p>
+<p>
+Tags:
+{% for tag in user.userprofile.tags.all %}
+    {{ tag }},
+{% endfor %}
+</p>
+<p>
+Attached Files:
+{% for file in user.userprofile.attached_files.all %}
+    <a href="{{ file.file.url }}">{{ file }}</a>
+{% endfor %}
+<form method="POST" action="{% url "ats_profiles_note" user.id %}">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="Submit" value="Submit">
+</form>
+</p>
+{% endblock %}

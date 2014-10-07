@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Profile {% endblock %}
+
+{% block content %}
+<h1>Edit Profile</h1>
+<form method="post" action="{% url 'ats_profiles_form' %}">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit">
+</form>
+
+<p>Attached files</p>
+{% for file in user.userprofile.attached_files.all %}
+    <p>{{ file }} <a href={% url "ats_profiles_deletefile" file.id %}>x</a></p>
+{% endfor %}
+
+<form method="post" action="{% url 'ats_profiles_fileform' %}"  enctype="multipart/form-data">
+{% csrf_token %}
+{{ fileform.as_p }}
+<input type="submit" value="Submit">
+</form>
+{% endblock %}

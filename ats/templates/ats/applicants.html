@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Jobs {% endblock %}
+
+{% block sidebar %}
+<ul class="nav&#x20;nav-pills&#x20;nav-stacked">
+    <li class="active">
+        <a href="{% url "ats_jobs" %}">Overview</a>
+    </li>
+    <li>
+        <a href="{% url "ats_create" %}">Create job</a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h1>List of applicants</h1>
+
+
+
+<div id="jobs-list-container" class="pagination-container">
+<table class="table table-striped table-bordered table-hover" id="jobs-list">
+
+<tbody>
+{% for applicant in applicant_list %}
+<tr>
+    <td><a href="{% url "ats_profiles_view" applicant.user.id %}">{{ applicant.user }}</a> applied for
+    <a href="{% url "ats_job" applicant.job.id %}">{{ applicant.job.job_title }}</a>
+     at {{ applicant.job.company }}
+           </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% if is_paginated %}
+    <div class="row yk-pagination">
+    <div class="col-md-6">
+    <ul class="pagination">
+    {% if page_obj.has_previous %}
+        <li><a title="First" href="?page=1"><i class="yk-icon yk-icon-pagination-start"></i></a></li>
+        <li><a href="?page={{ page_obj.previous_page_number }}">&lt; Previous</a></li>
+    {% else %}
+        <li class="disabled"><a title="First"><i class="yk-icon yk-icon-pagination-start"></i></a></li>
+        <li class="disabled"><a>&lt; Previous</a></li>
+    {% endif %}
+    {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}">Next &gt;</a></li>
+        <li><a title="Last" href="?page={{ page_obj.paginator.num_pages }}"><i class="yk-icon yk-icon-pagination-end"></i></a></li>
+    {% else %}
+        <li class="disabled"><a>Next &gt;</a></li>
+        <li class="disabled"><a title="Last"><i class="yk-icon yk-icon-pagination-end"></i></a></li>
+    {% endif %}
+    </ul>
+    </div>
+    <div class="col-md-6 text-right">
+    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</div>
+    </div>
+    </div>
+{% endif %}
+{% endblock %}
+

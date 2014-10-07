@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="yk-notifications">
+
+</div>
+
+
+
+<h1></h1>
+<div class="jumbotron text-center">
+              <p>
+               <h1>btcTalent ATS <span class="label label-danger">demo</span></h1>
+               <h3>The source for mining bitcoin talent pools </h3>
+               </p>
+              <p><br>
+              </p>
+ 			  <h4><a href="http://btctalent.com/faq">FAQ</a></h4>
+              <p><br>
+              </p>
+			  <h4>Login at top right corner of this page with email, bitcoin authentication, or just username: demo password: demo</h4>
+
+
+              <p><br>
+              </p>
+             <h4>Social Login:</h4>
+
+                <a class="login-link btn btn-primary btn-lg" title="Login with LinkedIn" href="/login/linkedin?ref=%252Fen"><i class="fa fa-linkedin"></i> LinkedIn</a>
+                <a class="login-link btn btn-primary btn-lg" href="/login/github">
+                    <i class="fa fa-github"></i> Github
+                </a>
+                <a class="login-link btn btn-primary btn-lg" href="/login/facebook">
+                    <i class="fa fa-facebook"></i> Facebook
+                </a>
+</div>
+<div class="container col-md-4">
+<aside class="panel panel-info">
+  <div class="panel-heading">Features</div>
+  <div class="panel-body ">
+   <ul>
+	   <li>Search the largest bitcoin talent database on earth - by orders of magnitude - <a href="http://btctalent.com/faq">Guaranteed</a></li>
+	   <li>Advanced applicant tracking & resume parsing tools help identify the right candidates fast</li>
+	   <li>ATS custom built for hiring professionals by hiring professionals</li>
+	   <li>Responsive, intuitive design</li>
+	   <li>Enter job postings</li>
+
+	   <li>Manage applications</li>
+   <li>One-click apply to jobs</li>
+   <li>Ready for social recruiting</li>
+
+   <li>Open-source software</li>
+   </ul>
+  </div>
+</aside>
+</div>
+<div class="container col-md-4">
+<aside class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Bitcoin News</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+	  <script id="feed-1412409508044923" type="text/javascript" src="http://rss.bloople.net/?url=http%3A%2F%2Ftrilema.com%2Ffeed%2F&detail=100&limit=4&showtitle=false&type=js&id=1412409508044923"></script>
+    </ul>
+  </div>
+</aside>
+</div>
+<div class="container col-md-4">
+<aside class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recruiter News</h3>
+  </div>
+  <div class="panel-body">
+  <ul>
+     <script id="feed-1412587660568147" type="text/javascript" src="http://rss.bloople.net/?url=http%3A%2F%2Fwww.ere.net%2Ffeed%2F&detail=100&limit=5&showtitle=false&type=js&id=1412587660568147"></script>
+    </ul>
+  </div>
+</aside>
+</div>
+{% endblock %}

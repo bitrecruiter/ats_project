@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Apply{% endblock %}
+
+{% block content %}
+
+
+<div class="yk-notifications">
+
+</div>
+
+<h2>{{ job.job_title }}<br><small>{{ job.company }} - {{ job.location }}</small></h2>
+
+<p>Online since: {{ job.created_at }}</p>
+<p>{{ job.job_description }}</p>
+
+{% if applied %}
+<p>You have applied for this job</p>
+{% else %}
+<form method="POST">
+    {% csrf_token %}
+    <input type="Submit" value="Apply" class="btn btn-primary btn-lg">
+</form>
+{% endif %}
+{% endblock %}
