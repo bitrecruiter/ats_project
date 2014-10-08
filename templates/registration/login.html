@@ -9,7 +9,7 @@
 {% if form.errors %}
 <p>{% blocktrans %}Your username and password didn't match. Please try again.{% endblocktrans %}</p>
 {% endif %}
-<div class="login_form">
+<div class="form form-300">
 <form method="post" action="{% url 'auth_login' %}">{% csrf_token %}
 {{ form.as_p }}
 <p>{% blocktrans %}<a href="{{ auth_pwd_reset_url }}">Forgot</a> your password?

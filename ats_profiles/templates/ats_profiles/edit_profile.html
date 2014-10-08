@@ -4,13 +4,15 @@
 
 {% block content %}
 <h1>Edit Profile</h1>
+<div class="form form-300">
 <form method="post" action="{% url 'ats_profiles_form' %}">
 {% csrf_token %}
 {{ form.as_p }}
-<input type="submit" value="Submit">
+<input type="submit" value="Submit" class="btn btn-primary">
 </form>
+</div>
 
-<p>Attached files</p>
+<h2>Attached files</h2>
 {% for file in user.userprofile.attached_files.all %}
     <p>{{ file }} <a href={% url "ats_profiles_deletefile" file.id %}>x</a></p>
 {% endfor %}
@@ -18,6 +20,6 @@
 <form method="post" action="{% url 'ats_profiles_fileform' %}"  enctype="multipart/form-data">
 {% csrf_token %}
 {{ fileform.as_p }}
-<input type="submit" value="Submit">
+<input type="submit" value="Submit" class="btn btn-primary">
 </form>
 {% endblock %}

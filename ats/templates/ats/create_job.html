@@ -15,9 +15,11 @@
 
 {% block content %}
 <h1>Create a job</h1>
+<div class="form form-300">
 <form method="post">
 {% csrf_token %}
 {{ form.as_p }}
-<input type="submit" value="Submit">
+<input type="submit" value="Submit" class="btn btn-primary">
 </form>
+</div>
 {% endblock %}

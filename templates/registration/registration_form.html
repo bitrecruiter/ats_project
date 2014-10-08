@@ -3,7 +3,7 @@
 {% block title %}{% trans "Register for an account" %}{% endblock %}
 {% block content %}
 <h1>Register</h1>
-<div class="registration_form">
+<div class="form form-300">
     <form method='post' action=''>{% csrf_token %}
         {{ form.as_p }}
         <tr><td></td><td><input type="submit" value="{% trans "Send activation email" %}" class="btn btn-primary"/></td>
