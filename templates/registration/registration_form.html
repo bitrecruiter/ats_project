@@ -2,10 +2,11 @@
 {% load i18n %}
 {% block title %}{% trans "Register for an account" %}{% endblock %}
 {% block content %}
-<table>
+<h1>Register</h1>
+<div class="registration_form">
     <form method='post' action=''>{% csrf_token %}
-        {{ form }}
-        <tr><td></td><td><input type="submit" value="{% trans "Send activation email" %}" /></td>
+        {{ form.as_p }}
+        <tr><td></td><td><input type="submit" value="{% trans "Send activation email" %}" class="btn btn-primary"/></td>
     </form>
-</table>
+</div>
 {% endblock %}
