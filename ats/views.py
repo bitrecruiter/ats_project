@@ -66,15 +66,37 @@ class JobView(View):
         )
 
 
-class ApplicantListView(ListView):
+class ApplicantListView(FormMixin, ListView):
     model = Application
     template_name = 'ats/applicants.html'
     paginate_by = 10
     context_object_name = 'applicant_list'
+    form_class = SearchForm
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(ApplicantListView, self).dispatch(*args, **kwargs)
+
+    def get_form_kwargs(self):
+        return {
+          'initial': self.get_initial(),
+          'prefix': self.get_prefix(),
+          'data': self.request.GET or None
+        }
+
+    def get(self, request, *args, **kwargs):
+        self.object_list = self.get_queryset()
+
+        form = self.get_form(self.get_form_class())
+        query = ''
+
+        if form.is_valid() and form.cleaned_data['query'] != '':
+            self.object_list = self.object_list.filter(
+                user__username__contains=form.cleaned_data['query']
+            )
+            query = form.cleaned_data['query']
+        context = self.get_context_data(form=form, query=query)
+        return self.render_to_response(context)
 
 class JobCreateView(CreateView):
     model = Job
