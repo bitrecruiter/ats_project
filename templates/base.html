@@ -59,7 +59,7 @@
         <li> <a href="{% url "auth_logout" %}"><span class="yk-icon yk-icon-logout"></span> Logout</a></li>
        {% else %}
         <li><a href="{% url "auth_login" %}"><span class="yk-icon yk-icon-login"></span> Login</a></li>
-        <li><a href="{% url "registration_register" %}"><span class="yk-icon yk-icon-login"></span> Register</a></li>
+        <li><a href="{% url "registration_register" %}"><span class="yk-icon yk-icon-login"></span> Register with email</a></li>
         <li><a href="{% url "bcauth-login" %}"><span class="yk-icon yk-icon-login"></span> Register with bitcoin</a></li>
        {% endif %}
         </ul>
