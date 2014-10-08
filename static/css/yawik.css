@@ -6,12 +6,12 @@
  * @license   GPLv3
  */
 /**
- * we've replaced glyphicons with font-awesome. therefore bootstrap/bootstrap.less from 
- * the bootstrap dist was copied to the local bootstrap.less. 
+ * we've replaced glyphicons with font-awesome. therefore bootstrap/bootstrap.less from
+ * the bootstrap dist was copied to the local bootstrap.less.
  * include "glyphicons.less" was replaces by "font-awesome/font-awesome.less"
  **/
 /**
-* this is a copy of bootstrap/bootstrap.less. It imports font-awesome fonts 
+* this is a copy of bootstrap/bootstrap.less. It imports font-awesome fonts
 * instead of glyphicons
 */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
@@ -1699,7 +1699,7 @@ output {
   line-height: 1.428571429;
   color: #555555;
 }
-.form-control {
+.form-control, .login_form input[type="text"], .login_form input[type="password"]{
   display: block;
   width: 100%;
   height: 34px;
@@ -6858,13 +6858,13 @@ a.portrait.active {
   overflow: hidden;
 }
 /*
-* new 
+* new
 */
 .yk-new * {
   font-weight: bold;
 }
 /*
-* State Colors 
+* State Colors
 */
 .cam-color-incoming {
   color: #5bc0de;
@@ -8042,4 +8042,8 @@ fieldset[disabled] .cam-form-remove.active {
 }
 #profiles {
   margin-bottom: 20px;
+}
+
+.login_form {
+    width:300px;
 }
