@@ -16,16 +16,16 @@
 <p>Summary: {{ profile_user.userprofile.summary }}</p>
 <p>
 Tags:
-{% for tag in user.userprofile.tags.all %}
+{% for tag in profile_user.userprofile.tags.all %}
     {{ tag }},
 {% endfor %}
 </p>
 <p>
 Attached Files:
-{% for file in user.userprofile.attached_files.all %}
+{% for file in profile_user.userprofile.attached_files.all %}
     <a href="{{ file.file.url }}">{{ file }}</a>
 {% endfor %}
-<form method="POST" action="{% url "ats_profiles_note" user.id %}">
+<form method="POST" action="{% url "ats_profiles_note" profile_user.id %}">
 {% csrf_token %}
 {{ form.as_p }}
 <input type="Submit" value="Submit">
