@@ -9,7 +9,6 @@ class Job(models.Model):
     apply_identifier = models.CharField(max_length=256)
     job_description = models.TextField()
     location = models.CharField(max_length=256)
-    contact_email = models.EmailField(max_length=254)
     reference_number = models.CharField(max_length=256)
     created_at = models.DateTimeField(auto_now=True)
 
