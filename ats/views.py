@@ -14,12 +14,6 @@ from ats.models import Job, Application
 from ats.forms import SearchForm
 from django.contrib.sites.shortcuts import get_current_site
 
-"""class JobListView(ListView):
-    model = Job
-    template_name = 'ats/jobs.html'
-    paginate_by = 10
-    context_object_name = 'job_list'"""
-
 
 class JobListView(FormMixin, ListView):
     model = Job
@@ -92,7 +86,7 @@ class ApplicantListView(FormMixin, ListView):
 
         if form.is_valid() and form.cleaned_data['query'] != '':
             self.object_list = self.object_list.filter(
-                user__username__contains=form.cleaned_data['query']
+                job__job_title__contains=form.cleaned_data['query']
             )
             query = form.cleaned_data['query']
         context = self.get_context_data(form=form, query=query)
