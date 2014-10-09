@@ -14,5 +14,5 @@
 <p>Online since: {{ job.created_at }}</p>
 <p>{{ job.job_description }}</p>
 
-<a href="/en/apply/55354175217b8eb9" class="btn btn-primary btn-lg">Apply</a>
+<a href="{% url "ats_apply" job.id %}" class="btn btn-primary btn-lg">Apply</a>
 {% endblock %}
