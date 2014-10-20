@@ -5,9 +5,10 @@
 {% block content %}
 <h1>Edit Profile</h1>
 <div class="form form-300">
-<form method="post" action="{% url 'ats_profiles_form' %}">
+<form method="post">
 {% csrf_token %}
-{{ form.as_p }}
+{{ userform.as_p }}
+{{ userprofileform.as_p }}
 <input type="submit" value="Submit" class="btn btn-primary">
 </form>
 </div>

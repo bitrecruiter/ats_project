@@ -7,7 +7,7 @@ from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse, reverse_lazy
 from ats_profiles.models import UserProfile, UserProfileAttachedFile
-from ats_profiles.forms import UserProfileForm, UserNoteForm, UserProfileAttachedFileForm
+from ats_profiles.forms import UserProfileForm, UserNoteForm, UserProfileAttachedFileForm, UserForm
 from ats.models import UserNote
 
 
@@ -63,7 +63,28 @@ class UserProfileEditView(View):
             self.template_name,
             {
                 'user': self.request.user,
-                'form': UserProfileForm(instance=profile),
+                'userprofileform': UserProfileForm(instance=profile),
+                'userform': UserForm(instance=request.user),
+                'fileform': UserProfileAttachedFileForm()
+            },
+            context_instance=RequestContext(request)
+        )
+
+    def post(self, request, *args, **kwargs):
+        profile = UserProfile.objects.get_or_create(
+            user=self.request.user
+        )[0]
+        userprofileform = UserProfileForm(request.POST, instance=profile)
+        userform = UserForm(request.POST, instance=request.user)
+        if userform.is_valid() and userprofileform.is_valid:
+            userform.save()
+            userprofileform.save()
+        return render_to_response(
+            self.template_name,
+            {
+                'user': self.request.user,
+                'userprofileform': userprofileform,
+                'userform': userform,
                 'fileform': UserProfileAttachedFileForm()
             },
             context_instance=RequestContext(request)
