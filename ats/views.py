@@ -92,6 +92,7 @@ class ApplicantListView(FormMixin, ListView):
         context = self.get_context_data(form=form, query=query)
         return self.render_to_response(context)
 
+
 class JobCreateView(CreateView):
     model = Job
     template_name = 'ats/create_job.html'

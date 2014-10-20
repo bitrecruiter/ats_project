@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load markdown_deux_tags %}
 
 {% block title %}Jobs {% endblock %}
 
@@ -12,7 +13,7 @@
 <h2>{{ job.job_title }}<br><small>{{ job.company }} - {{ job.location }}</small></h2>
 
 <p>Online since: {{ job.created_at }}</p>
-<p>{{ job.job_description }}</p>
+<p>{{ job.job_description|markdown }}</p>
 
 <a href="{% url "ats_apply" job.id %}" class="btn btn-primary btn-lg">Apply</a>
 {% endblock %}

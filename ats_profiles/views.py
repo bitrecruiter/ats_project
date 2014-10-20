@@ -69,6 +69,7 @@ class UserProfileEditView(View):
             context_instance=RequestContext(request)
         )
 
+
 class UserProfileView(View):
     template_name = 'ats_profiles/view_profile.html'
 

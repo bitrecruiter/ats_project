@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'ats_profiles',
     'registration',
     'bcauth',
+    'markdown_deux',
     'social.apps.django_app.default',
     'django.contrib.sites',
     'django.contrib.admin',
