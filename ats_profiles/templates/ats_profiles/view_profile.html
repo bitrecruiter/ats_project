@@ -4,6 +4,7 @@
 
 {% block content %}
 <h1>{{ profile_user }}</h1>
+<p>Email: {{ profile_user.email }}</p>
 <p>Salutation: {{ profile_user.userprofile.salutation }}</p>
 <p>Phone: {{ profile_user.userprofile.phone }}</p>
 <p>Address 1: {{ profile_user.userprofile.address1 }}<p/>
