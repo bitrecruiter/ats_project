@@ -14,6 +14,5 @@ urlpatterns = patterns(
     url(r'^bcauth/', include('bcauth.urls')),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^markdown/', include( 'django_markdown.urls')),
     url('', include('social.apps.django_app.urls', namespace='social'))
 )
