@@ -47,15 +47,15 @@
     <div class="col-md-6">
     <ul class="pagination">
     {% if page_obj.has_previous %}
-        <li><a title="First" href="?page=1"><i class="yk-icon yk-icon-pagination-start"></i></a></li>
-        <li><a href="?page={{ page_obj.previous_page_number }}">&lt; Previous</a></li>
+        <li><a title="First" href="?page=1&query={{ query }}"><i class="yk-icon yk-icon-pagination-start"></i></a></li>
+        <li><a href="?page={{ page_obj.previous_page_number }}&query={{ query }}">&lt; Previous</a></li>
     {% else %}
         <li class="disabled"><a title="First"><i class="yk-icon yk-icon-pagination-start"></i></a></li>
         <li class="disabled"><a>&lt; Previous</a></li>
     {% endif %}
     {% if page_obj.has_next %}
-        <li><a href="?page={{ page_obj.next_page_number }}">Next &gt;</a></li>
-        <li><a title="Last" href="?page={{ page_obj.paginator.num_pages }}"><i class="yk-icon yk-icon-pagination-end"></i></a></li>
+        <li><a href="?page={{ page_obj.next_page_number }}&query={{ query }}">Next &gt;</a></li>
+        <li><a title="Last" href="?page={{ page_obj.paginator.num_pages }}&query={{ query }}"><i class="yk-icon yk-icon-pagination-end"></i></a></li>
     {% else %}
         <li class="disabled"><a>Next &gt;</a></li>
         <li class="disabled"><a title="Last"><i class="yk-icon yk-icon-pagination-end"></i></a></li>
