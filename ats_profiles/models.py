@@ -57,6 +57,8 @@ class UserProfile(models.Model):
     summary = models.CharField(max_length=256, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
     cvtext = models.TextField(blank=True)
+    wot_name = models.CharField(max_length=256, blank=True, default='')
+    wot_rating = models.IntegerField(blank=True, default=0)
     attached_files = models.ManyToManyField(
         UserProfileAttachedFile,
         blank=True
