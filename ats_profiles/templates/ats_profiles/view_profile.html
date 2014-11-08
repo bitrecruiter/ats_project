@@ -12,6 +12,13 @@
 <p>City: {{ profile_user.userprofile.city }}</p>
 <p>Postcode: {{ profile_user.userprofile.postcode }}</p>
 <p>Summary: {{ profile_user.userprofile.summary }}</p>
+<p>Web of Trust:
+    {% if profile_user.userprofile.wot_name %}
+        <a href="http://bitcoin-otc.com/viewratingdetail.php?nick={{ profile_user.userprofile.wot_name }}">{{ profile_user.userprofile.wot_name }}</a>
+    {% endif %}
+    ({{ profile_user.userprofile.wot_rating }})
+</p>
+<p>Summary: {{ profile_user.userprofile.summary }}</p>
 <p>
 Tags:
 {% for tag in profile_user.userprofile.tags.all %}

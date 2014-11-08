@@ -28,3 +28,10 @@ class UserNote(models.Model):
     user_noted = models.ForeignKey(User, related_name='user_noted')
     user_noter = models.ForeignKey(User, related_name='user_noter')
     note = models.TextField()
+
+
+class GitHubCache(models.Model):
+    query = models.CharField(max_length=256)
+    page = models.IntegerField()
+    data = models.TextField()
+    created_at = models.DateTimeField(auto_now=True)

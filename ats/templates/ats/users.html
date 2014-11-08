@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block title %}Users {% endblock %}
 
@@ -10,13 +11,25 @@
 <div id="form-jobs-list-filter" class="form-container"><div class="form-content">
 <form method="GET" name="jobs-list-filter" id="jobs-list-filter" class="&#x20;form-inline"><input type="hidden" name="page" value="1"><div id="params-search-wrapper" class="cam-input-group input-group">
     <span class="input-group-addon">?</span>
-    <input name="query" class="form-control&#x20;" placeholder="search for candidates" type="text" value="">    <span class="input-group-btn">
+    <input name="query" class="form-control&#x20;" placeholder="search for candidates" type="text" value="{{ query }}">    <span class="input-group-btn">
         <button class="btn btn-primary" type="submit">Search</button>
     </span>
 </div>
 
 </form></div></div></nav>
 <div id="jobs-list-container" class="pagination-container">
+{% if error %}
+
+
+    <div class="alert alert-error">
+
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+
+        <strong>Error!</strong> {{ error }}
+
+    </div>
+
+{% else %}
 <table class="table table-striped table-bordered table-hover" id="jobs-list">
 <thead>
 <tr>
@@ -28,18 +41,26 @@
 <tbody>
 {% for user in users_list %}
 <tr>
-    <td><a href="{% url "ats_profiles_view" user.id %}">{{ user }}</a></td>
+    {% if user.github %}
+        <td><a href="https://github.com/{{ user.user }}"><img src="{% static "img/github-icon.png" %}" /></a><a href="http://github.talentpools.info/{{ user.user }}">{{ user.user }}</a></td>
+        <td>
+        github {{ user.tag }}
+        </td>
+    {% else %}
+        <td><a href="{% url "ats_profiles_view" user.id %}">{{ user }}</a></td>
 
-    <td>
-        {% for tag in user.userprofile.tags.all %}
-            {{ tag }}
-        {% endfor %}
-    </td>
+        <td>
+            {% for tag in user.userprofile.tags.all %}
+                {{ tag }}
+            {% endfor %}
+        </td>
+    {% endif %}
 
 </tr>
 {% endfor %}
 </tbody>
 </table>
+{% endif %}
 
 {% if is_paginated %}
     <div class="row yk-pagination">
@@ -54,7 +75,7 @@
     {% endif %}
     {% if page_obj.has_next %}
         <li><a href="?page={{ page_obj.next_page_number }}&query={{ query }}">Next &gt;</a></li>
-        <li><a title="Last" href="?page={{ page_obj.paginator.num_pages }}&query={{ query }}"><i class="yk-icon yk-icon-pagination-end"></i></a></li>
+        <li><a title="Last" href="?page={{ page_obj.num_pages }}&query={{ query }}"><i class="yk-icon yk-icon-pagination-end"></i></a></li>
     {% else %}
         <li class="disabled"><a>Next &gt;</a></li>
         <li class="disabled"><a title="Last"><i class="yk-icon yk-icon-pagination-end"></i></a></li>
@@ -62,7 +83,7 @@
     </ul>
     </div>
     <div class="col-md-6 text-right">
-    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</div>
+    Page {{ page_obj.number }} of {{ page_obj.num_pages }}</div>
     </div>
     </div>
 {% endif %}
