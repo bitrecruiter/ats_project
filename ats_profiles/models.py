@@ -63,6 +63,7 @@ class UserProfile(models.Model):
         UserProfileAttachedFile,
         blank=True
     )
+    avatar = models.ImageField(blank=True)
 
 signals.m2m_changed.connect(
     create_tags,
