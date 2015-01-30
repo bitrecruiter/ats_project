@@ -75,7 +75,7 @@
     {% endif %}
     {% if page_obj.has_next %}
         <li><a href="?page={{ page_obj.next_page_number }}&query={{ query }}">Next &gt;</a></li>
-        <li><a title="Last" href="?page={{ page_obj.paginator.num_pages }}&query={{ query }}"><i class="yk-icon yk-icon-pagination-end"></i></a></li>
+        <li><a title="Last" href="?page={{ page_obj.num_pages }}&query={{ query }}"><i class="yk-icon yk-icon-pagination-end"></i></a></li>
     {% else %}
         <li class="disabled"><a>Next &gt;</a></li>
         <li class="disabled"><a title="Last"><i class="yk-icon yk-icon-pagination-end"></i></a></li>
@@ -83,7 +83,7 @@
     </ul>
     </div>
     <div class="col-md-6 text-right">
-    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</div>
+    Page {{ page_obj.number }} of {{ page_obj.num_pages }}</div>
     </div>
     </div>
 {% endif %}
