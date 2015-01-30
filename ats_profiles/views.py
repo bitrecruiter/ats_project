@@ -76,7 +76,7 @@ class UserProfileEditView(View):
         )[0]
         userprofileform = UserProfileForm(request.POST, instance=profile)
         userform = UserForm(request.POST, instance=request.user)
-        if userform.is_valid() and userprofileform.is_valid:
+        if userform.is_valid() and userprofileform.is_valid():
             userform.save()
             userprofileform.save()
         return render_to_response(
