@@ -94,6 +94,8 @@ class UserProfileEditView(View):
 class UserProfileView(View):
     template_name = 'ats_profiles/view_profile.html'
 
+
+    @method_decorator(login_required)
     def get(self, request, *args, **kwargs):
         user = get_object_or_404(User, pk=kwargs['user_id'])
         note = UserNote.objects.get_or_create(
